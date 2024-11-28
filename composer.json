@@ -1,0 +1,55 @@
+{
+  "name": "dragonbe/charged-timer",
+  "description": "A convenient time registration tool with Peppol compliant invoicing capabilities",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "DragonBe",
+      "email": "dragonbe@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "DragonBe\\ChargedTimer\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DragonBe\\ChargedTimerTest\\": "tests/unit/",
+      "DragonBe\\ChargedTimerFeature\\": "tests/feature/bootstrap"
+    }
+  },
+  "require-dev": {
+    "behat/behat": "^v3.16",
+    "infection/infection": "^0.29",
+    "phpstan/phpstan": "^2.0",
+    "phpunit/phpunit": "^11.4",
+    "squizlabs/php_codesniffer": "^3.11"
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpstan": "phpstan analyse -c phpstan.neon.dist",
+    "phpunit": "phpunit -c phpunit.xml.dist",
+    "infection": "infection --configuration=infection.json5.dist",
+    "behat": "behat --config behat.yml.dist",
+    "run-all": ["@phpcs", "@phpstan", "@phpunit", "@infection", "behat"]
+  },
+  "scripts-descriptions": {
+    "phpcs": "Perform coding standards checking",
+    "phpstan": "Perform static analyisis on codebase",
+    "phpunit": "Perform unit tests on codebase",
+    "infection": "Perform mutation tests on codebase",
+    "behat": "Peform acceptance tests on codebase",
+    "run-all": "Perform all code quality checkers (phpcs, phpstan, phpunit, infection, behat)"
+  },
+  "config": {
+    "allow-plugins": {
+      "infection/extension-installer": true
+    }
+  }
+}

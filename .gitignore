@@ -1,0 +1,7 @@
+/build
+/vendor
+/*.json
+/*.properties
+/*.yml
+/*.xml
+!/composer.json
