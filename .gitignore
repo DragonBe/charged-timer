@@ -1,6 +1,8 @@
+/.phpunit.cache
 /build
 /vendor
 /*.json
+/*.neon
 /*.properties
 /*.yml
 /*.xml

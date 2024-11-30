@@ -1,9 +1,15 @@
 {
   "name": "dragonbe/charged-timer",
-  "description": "A convenient time registration tool with Peppol compliant invoicing capabilities",
+  "description": "A convenient time registration project with Peppol compliant invoicing capabilities",
   "minimum-stability": "stable",
   "license": "MIT",
+  "type": "project",
   "version": "0.1.0",
+  "keywords": [
+    "time tracking",
+    "invoicing",
+    "peppol"
+  ],
   "authors": [
     {
       "name": "DragonBe",
@@ -11,7 +17,9 @@
     }
   ],
   "require": {
-    "php": "^8.4"
+    "php": "^8.4",
+    "ext-pdo": "*",
+    "laminas/laminas-hydrator": "^4.16"
   },
   "autoload": {
     "psr-4": {
@@ -20,36 +28,27 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "DragonBe\\ChargedTimerTest\\": "tests/unit/",
-      "DragonBe\\ChargedTimerFeature\\": "tests/feature/bootstrap"
+      "DragonBe\\Test\\ChargedTimer\\": "tests/unit/"
     }
   },
   "require-dev": {
-    "behat/behat": "^v3.16",
-    "infection/infection": "^0.29",
+    "enlightn/security-checker": "^2.0",
     "phpstan/phpstan": "^2.0",
     "phpunit/phpunit": "^11.4",
     "squizlabs/php_codesniffer": "^3.11"
   },
   "scripts": {
-    "phpcs": "phpcs",
-    "phpstan": "phpstan analyse -c phpstan.neon.dist",
-    "phpunit": "phpunit -c phpunit.xml.dist",
-    "infection": "infection --configuration=infection.json5.dist",
-    "behat": "behat --config behat.yml.dist",
-    "run-all": ["@phpcs", "@phpstan", "@phpunit", "@infection", "behat"]
+    "phpsec": "security-checker security:check composer.lock",
+    "phpcs": "phpcs --standard=phpcs.xml.dist",
+    "phpstan": "phpstan analyse --configuration phpstan.neon.dist --no-ansi",
+    "phpunit": "phpunit --configuration=phpunit.xml.dist",
+    "test-all": ["@phpsec","@phpcs", "@phpstan","@phpunit"]
   },
   "scripts-descriptions": {
-    "phpcs": "Perform coding standards checking",
-    "phpstan": "Perform static analyisis on codebase",
-    "phpunit": "Perform unit tests on codebase",
-    "infection": "Perform mutation tests on codebase",
-    "behat": "Peform acceptance tests on codebase",
-    "run-all": "Perform all code quality checkers (phpcs, phpstan, phpunit, infection, behat)"
-  },
-  "config": {
-    "allow-plugins": {
-      "infection/extension-installer": true
-    }
+    "phpsec": "Verify that dependency packages contain no known security vulnerabilities",
+    "phpcs": "Verify the code meets our coding standards",
+    "phpstan": "Verify the code is free of bugs",
+    "phpunit": "Verify that the code does what we intended it to do",
+    "test-all": "Perform all quality verifications"
   }
 }
