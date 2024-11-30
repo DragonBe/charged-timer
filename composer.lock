@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d4341a25bd95ff715abc26dea741ad3",
+    "content-hash": "d89ed102c279a411307749856f9061db",
     "packages": [
         {
             "name": "laminas/laminas-hydrator",
