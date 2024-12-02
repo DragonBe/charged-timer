@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace DragonBe\ChargedTimer\Client\Repository;
+namespace DragonBe\ChargedTimer\Contact\Repository;
 
 use ArrayIterator;
-use DragonBe\ChargedTimer\Client\Model\ClientInterface;
+use DragonBe\ChargedTimer\Contact\Model\ContactInterface;
 use DragonBe\ChargedTimer\Common\Repository\PdoAbstractRepository;
 use Iterator;
 use Laminas\Hydrator\HydratorInterface;
 use PDO;
 
-final class PdoClientRepository extends PdoAbstractRepository
+final class PdoContactRepository extends PdoAbstractRepository
 {
-    private ClientInterface $client;
+    private ContactInterface $contact;
 
     /**
      * @inheritDoc
      */
-    public function __construct(PDO $pdo, HydratorInterface $hydrator, ClientInterface $client)
+    public function __construct(PDO $pdo, HydratorInterface $hydrator, ContactInterface $contact)
     {
         parent::__construct($pdo, $hydrator);
-        $this->client = $client;
+        $this->contact = $contact;
     }
 
     /**
@@ -29,14 +29,14 @@ final class PdoClientRepository extends PdoAbstractRepository
      */
     public function list(): Iterator
     {
-        $query = 'SELECT * FROM client ORDER BY last_name ASC';
+        $query = 'SELECT * FROM contact ORDER BY last_name ASC';
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
 
         $data = [];
 
         while (false !== ($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-            $data[] = $this->hydrator->hydrate($row, $this->client);
+            $data[] = $this->hydrator->hydrate($row, $this->contact);
         }
 
         return new ArrayIterator($data);

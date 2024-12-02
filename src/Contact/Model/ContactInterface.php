@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DragonBe\ChargedTimer\Client\Model;
+namespace DragonBe\ChargedTimer\Contact\Model;
 
-interface ClientInterface
+interface ContactInterface
 {
     /**
      * Retrieve the first name of the client

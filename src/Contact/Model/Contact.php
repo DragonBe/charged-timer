@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DragonBe\ChargedTimer\Client\Model;
+namespace DragonBe\ChargedTimer\Contact\Model;
 
-final class Client implements ClientInterface
+final class Contact implements ContactInterface
 {
     private string $firstName;
     private string $lastName;
